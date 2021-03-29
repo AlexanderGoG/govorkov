@@ -1,7 +1,17 @@
 <?php
-$cols = rand(1,10); 
-    $rows = rand(1,10);
+function drawTable ($cols , $rows , $color ) {
+ echo "<table border='1'>\n";
+ for($r=1;$r<=$rows;$r++){
+	 echo "<tr>\n";
+	 for($c=1; $c<=$cols; $c++){
+		 if($r==1 || $c==1){echo "\t\t<th style='background:$color'>".$r*$c."</th>\n";}
+		 else{echo "\t\t<td>".$r*$c."</td>\n";}
+	 }
+	 echo "</tr>";
+ }
+ echo "</table>";}
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,16 +31,7 @@ $cols = rand(1,10);
 			<!-- Заголовок -->
 			<h1>Таблица умножения</h1>
 			 <?php
-    echo "<table border='1'>\n";
-    for($r=1;$r<=$rows;$r++){
-        echo "<tr>\n";
-        for($c=1; $c<=$cols; $c++){
-            if($r==1 || $c==1){echo "\t\t<th style='background:grey'>".$r*$c."</th>\n";}
-            else{echo "\t\t<td>".$r*$c."</td>\n";}
-        }
-        echo "</tr>";
-    }
-    echo "</table>";
+drawTable(rand(1,10),rand(1,10),'red');
     ?>
 			<!-- Заголовок -->
 			<!-- Область основного контента -->
@@ -42,11 +43,18 @@ $cols = rand(1,10);
 		<div id="nav">
 			<h2>Навигация по сайту</h2>
 			<!-- Меню -->
-			<ul>
-				<li><a href='index.php'>Домой</a></li>
-				<li><a href='about.php'>О нас</a></li>
-				<li><a href='contact.php'>Контакты</a></li>
-			</ul>
+			<?php
+			$leftMenu = [['link'=>'Домой', 'href'=>'index.php'],['link'=>'О нас', 'href'=>'about.php'],
+			['link'=>'Контакты', 'href'=>'contact.php'],['link'=>'Таблица', 'href'=>'table.php']];
+			
+
+			foreach ($leftMenu as $item) { 
+				echo "<ul>";
+					echo "<li>";
+						echo "<a href='{$item['href']}'> {$item['link']} </a>"; 
+					echo "</li>";
+				echo "</ul>";
+			}?>
 			<!-- Меню -->
 		</div>
 		<div id="footer">
