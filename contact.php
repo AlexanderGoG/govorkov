@@ -33,6 +33,7 @@
 		<div id="nav">
 			<h2>Навигация по сайту</h2>
 			<!-- Меню -->
+			<?php$leftMenu = ['home'=>'index.php','about'=>'about.php','contacts'=>'contact.php'];?>
 			<ul>
 				<li><a href='index.php'>Домой</a></li>
 				<li><a href='about.php'>О нас</a></li>
